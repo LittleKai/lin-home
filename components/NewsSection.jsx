@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Calendar, ArrowRight, Eye, Heart, Share2 } from 'lucide-react';
+import { Calendar, ArrowRight, Eye, Heart, Share2, Send } from 'lucide-react';
 
 const NewsSection = () => {
     // News articles data
