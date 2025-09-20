@@ -15,10 +15,9 @@ const nextConfig = {
         unoptimized: true,
     },
 
-    // Enable experimental features
+    // Enable experimental features (removed deprecated appDir)
     experimental: {
-        // App directory for newer Next.js versions
-        appDir: false,
+        // Add any new experimental features here if needed
     },
 
     // Configure build settings
@@ -32,6 +31,23 @@ const nextConfig = {
         SITE_URL: process.env.VERCEL_URL
             ? `https://${process.env.VERCEL_URL}`
             : 'http://localhost:3000',
+    },
+
+    // Webpack configuration to ignore problematic directories
+    webpack: (config, { isServer }) => {
+        if (!isServer) {
+            config.watchOptions = {
+                ...config.watchOptions,
+                ignored: [
+                    '**/node_modules',
+                    '**/.next',
+                    '**/.git',
+                    'D:\\Config.Msi',
+                    'D:\\System Volume Information'
+                ]
+            };
+        }
+        return config;
     },
 
     // SEO and metadata
